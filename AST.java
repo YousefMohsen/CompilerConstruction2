@@ -24,12 +24,17 @@ class Start extends AST {
 
 
     public String compile() {
-        String listString = "";
+        try {
+            String listString = "";
 
-        for (DataTypeDef s : this.datatypedefs) {
-            listString += s.compile() + "\t";
+            for (DataTypeDef s : this.datatypedefs) {
+                listString += s.compile() + "\t";
+            }
+            return ""+ listString;
+        }catch (Exception err){
+return ""+err;
         }
-        return "Xavi Start" + listString;
+
     }
 }
 
@@ -56,10 +61,8 @@ class DataTypeDef extends AST {
         this.alternatives = alternatives;
     }
 
-    public String compile() {
+    public String compile() throws  Exception {
         String listString = "abstract class " + this.dataTypeName + "{};\n";
-        System.out.println("This is where Thiago is supposed to ");
-
 
         for (Alternative a : this.alternatives) {
             //System.out.println("ASyssOut"+a.compile(this.dataTypeName));
@@ -81,28 +84,54 @@ class Alternative extends AST {
         this.tokens = tokens;
     }
 
+    void typeCheck() throws  Exception{
 
 
-    String compileToString(){
-        int index =1;
+        for (Argument a : this.arguments) {
 
-        String tokensCompiled ="";
+            if(a.name.equals(a.type)){
+                throw new Exception("Symbol \""+a.name+"\" is used as a type and a name in class "+this.constructor);
+            }
+
+
+
+           /* else {
+
+                    for (Argument arg2 : this.arguments) {
+                        if(a.name.equals(arg2.name)){
+                            throw new Exception("in class "+this.constructor);
+
+                        }
+
+                    }
+            }*/
+
+        }
+
+
+    }
+
+
+    String compileToString() {
+        int index = 1;
+
+        String tokensCompiled = "";
         for (Token t : this.tokens) {
             String addPlus = (index == this.tokens.size()) ? "" : "+";
 
 
-            tokensCompiled+=t.compile()+addPlus;
+            tokensCompiled += t.compile() + addPlus;
             index++;
 
 
         }
         return "public String toString(){" +
-                "return \"\"+"+ tokensCompiled+
+                "return \"\"+" + tokensCompiled +
                 "}\n";
     }
 
 
-    String compileConstructor(){
+    String compileConstructor() {
         String constInit = "";
 
         String argsCompiled = "";
@@ -114,36 +143,34 @@ class Alternative extends AST {
             argsCompiled += a.compileArguments() + addComma;
             index++;
 
-            constInit += a.compileConstructorArguments()+";\n";
+            constInit += a.compileConstructorArguments() + ";\n";
         }
 
-        return  ""+
+        return "" +
                 this.constructor +
                 "  ( " + argsCompiled + "){\n" +
-                constInit+
-                "}\n" ;
+                constInit +
+                "}\n";
     }
 
 
-    public String compile(String extendsClass) {
+    public String compile(String extendsClass) throws  Exception {
         String variables = "";
         String extendsString = (extendsClass == null) ? "" : " extends " + extendsClass;
         String toStringMethod = this.compileToString();
         String compiledConstructer = this.compileConstructor();
+        this.typeCheck();
         for (Argument a : this.arguments) {
-            variables+=a.compileVariables();
+            variables += a.compileVariables();
 
         }
 
 
-
-
-
         return "" + "class " + this.constructor + extendsString + "{\n" +
-                variables+
-                "\n"+compiledConstructer+
-                "\n"+ toStringMethod+
-        "\n}\n\n";
+                variables +
+                "\n" + compiledConstructer +
+                "\n" + toStringMethod +
+                "\n}\n\n";
     }
 }
 
@@ -157,8 +184,9 @@ class Argument extends AST {
     }
 
     public String compileVariables() {
-        return "public " + type + " " + name+";\n";
+        return "public " + type + " " + name + ";\n";
     }
+
     public String compileArguments() {
         return "" + type + " " + name;
     }
@@ -185,7 +213,7 @@ class Nonterminal extends Token {//v,name,e1,e2
 
     @Override
     public String compile() {
-        return  this.name;
+        return this.name;
     }
 }
 
@@ -198,12 +226,14 @@ class Terminal extends Token {// '(' , '*' , '+', ')'
 
     @Override
     public String compile() {
-        return  this.token.replaceAll("'", "\"" );
+        return this.token.replaceAll("'", "\"");
     }
 }
 
 /*
-- variable declaration
-- toString
+- variable declaration done
+- toString don
+-string/double
+-typecheck
 -
 * */
