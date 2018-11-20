@@ -82,6 +82,26 @@ class Alternative extends AST {
     }
 
 
+
+    String compileToString(){
+        int index =1;
+
+        String tokensCompiled ="";
+        for (Token t : this.tokens) {
+            String addPlus = (index == this.tokens.size()) ? "" : "+";
+
+
+            tokensCompiled+=t.compile()+addPlus;
+            index++;
+
+
+        }
+        return "public String toString(){" +
+                "return \"\"+"+ tokensCompiled+
+                "}\n";
+    }
+
+
     String compileConstructor(){
         String constInit = "";
 
@@ -101,14 +121,14 @@ class Alternative extends AST {
                 this.constructor +
                 "  ( " + argsCompiled + "){\n" +
                 constInit+
-                "  }\n" ;
+                "}\n" ;
     }
 
 
     public String compile(String extendsClass) {
         String variables = "";
         String extendsString = (extendsClass == null) ? "" : " extends " + extendsClass;
-
+        String toStringMethod = this.compileToString();
         String compiledConstructer = this.compileConstructor();
         for (Argument a : this.arguments) {
             variables+=a.compileVariables();
@@ -121,12 +141,9 @@ class Alternative extends AST {
 
         return "" + "class " + this.constructor + extendsString + "{\n" +
                 variables+
-                compiledConstructer+
-
-                "  public String toString(){\n" +
-                "    return \"\"+v;\n" +
-                "  }\n" +
-                "}\n";
+                "\n"+compiledConstructer+
+                "\n"+ toStringMethod+
+        "\n}\n\n";
     }
 }
 
@@ -168,7 +185,7 @@ class Nonterminal extends Token {//v,name,e1,e2
 
     @Override
     public String compile() {
-        return "Nonterminal: " + this.name;
+        return  this.name;
     }
 }
 
@@ -181,7 +198,7 @@ class Terminal extends Token {// '(' , '*' , '+', ')'
 
     @Override
     public String compile() {
-        return "Terminal: " + this.token;
+        return  this.token.replaceAll("'", "\"" );
     }
 }
 
