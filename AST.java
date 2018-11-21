@@ -83,9 +83,10 @@ class Alternative extends AST { //laver klasser
     }
 
     void typeCheck() throws Exception {
+
         Boolean error = false;
         String notFoundVar = "";
-        for (Token token : this.tokens) {
+        for (Token token : this.tokens) {//Task 3.1: check for undefined var
             error = false;
 
             for (Argument arg : this.arguments) {
@@ -99,41 +100,61 @@ class Alternative extends AST { //laver klasser
                         error = true;
                     }
                 }
-
-            }
+                }
 
             if(error){
-                throw new Exception("Symbol \""+ notFoundVar+"\" is not defined in " + this.constructor);
-
-
+                throw new Exception("Symbol \""+ notFoundVar+"\" is undefined in " + this.constructor);
             }
-
-
         }
-
-
             for (Argument a : this.arguments) {
-
-            if (a.name.equals(a.type)) {
+            if (a.name.equals(a.type)) {//Task 3.2: check for double use of symbol
                 throw new Exception("Symbol \"" + a.name + "\" is used as a type and a name in class " + this.constructor);
-
-
             }
 
+            int occuredCount = 0;
 
-
-           /* else {
-
-                    for (Argument arg2 : this.arguments) {
-                        if(a.name.equals(arg2.name)){
-                            throw new Exception("in class "+this.constructor);
+                for (Argument arg2 : this.arguments) {//task 3.3
+                    if(arg2.name.equals(a.name)){
+                        occuredCount++;
+                        if(occuredCount>1){
+                            throw new Exception("Variable name \""  + a.name+ "\" occurs more than once in "+ this.constructor);
 
                         }
 
                     }
-            }*/
+
+                }
+            }
+
+
+
+        for (Argument a : this.arguments) {//Task 3.4: check for unused arguments
+
+            Boolean argumentIsUsed = false;
+
+
+            for (Token token : this.tokens) {
+
+                if (token.getType().equals("nonTerminal")) {
+
+                    if(((Nonterminal)token).getName().equals(a.name) ){
+
+                        argumentIsUsed = true;
+                        break;
+                    }
+                }
+
+            }
+
+
+            if (!argumentIsUsed) {//throw Error if an argument is not used
+                throw new Exception("Argument \"" + a.name + "\" in " + this.constructor+" is not used. " );
+            }
+
 
         }
+
+
 
 
     }
@@ -151,8 +172,8 @@ class Alternative extends AST { //laver klasser
             index++;
         }
         return "public String toString(){" +
-                "return \"\"+" + tokensCompiled +
-                "}\n";
+                "\n return \"\"+" + tokensCompiled +
+                "\n}\n";
     }
 
     String compileConstructor() {//laver constructer
@@ -162,7 +183,7 @@ class Alternative extends AST { //laver klasser
         int index = 1;
 
         for (Argument a : this.arguments) {
-            String addComma = index == this.arguments.size() ? "" : ",";
+            String addComma = index == this.arguments.size() ? "" : ", ";
 
             argsCompiled += a.compileArguments() + addComma;
             index++;
@@ -171,7 +192,7 @@ class Alternative extends AST { //laver klasser
 
         return "" +
                 this.constructor +
-                "  ( " + argsCompiled + "){\n" +
+                "(" + argsCompiled + "){\n" +
                 constInit +
                 "}\n";
     }

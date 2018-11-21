@@ -1,1 +1,1 @@
-java.lang.Exception: Symbol "e5" is not defined in Mult
+java.lang.Exception: Variable name "blah" occurs more than once in Tanja
