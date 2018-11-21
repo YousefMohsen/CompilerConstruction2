@@ -27,7 +27,7 @@ class Start extends AST {
             String listString = "";
 
             for (DataTypeDef s : this.datatypedefs) {
-                listString += s.compile() + "\t";
+                listString += s.compile(this.tokendefs) + "\t";
             }
             return "" + listString;
         } catch (Exception e) {
@@ -60,10 +60,10 @@ class DataTypeDef extends AST {
         this.alternatives = alternatives;
     }
 
-    public String compile() throws Exception {
+    public String compile(List<TokenDef> tokendefs) throws Exception {
         String listString = "abstract class " + this.dataTypeName + "{};\n\n";
-
         for (Alternative a : this.alternatives) {
+            a.mapArguments(tokendefs);
 
             listString += a.compile(this.dataTypeName);
         }
@@ -82,92 +82,77 @@ class Alternative extends AST { //laver klasser
         this.tokens = tokens;
     }
 
-    void typeCheck() throws Exception {
+    public void mapArguments(List<TokenDef> tokendefs) { //map arguments types to valid Java types
+        for (Argument arg : this.arguments) {
+            for (TokenDef tokenDef : tokendefs) {
+                if (arg.type.equals(tokenDef.tokenname)) {
+                    arg.type = "String";
+                }
+            }
+        }
+    }
 
+    void typeCheck() throws Exception {
         Boolean error = false;
         String notFoundVar = "";
         for (Token token : this.tokens) {//Task 3.1: check for undefined var
             error = false;
-
             for (Argument arg : this.arguments) {
                 if (token.getType().equals("nonTerminal")) {
-
-                    if(((Nonterminal)token).getName().equals(arg.name) ){
+                    if (((Nonterminal) token).getName().equals(arg.name)) {
                         error = false;
                         break;
-                    }else {
+                    } else {
                         notFoundVar = ((Nonterminal) token).getName();
                         error = true;
                     }
                 }
-                }
+            }
 
-            if(error){
-                throw new Exception("Symbol \""+ notFoundVar+"\" is undefined in " + this.constructor);
+            if (error) {
+                throw new Exception("Symbol \"" + notFoundVar + "\" is undefined in " + this.constructor);
             }
         }
-            for (Argument a : this.arguments) {
+        for (Argument a : this.arguments) {
             if (a.name.equals(a.type)) {//Task 3.2: check for double use of symbol
                 throw new Exception("Symbol \"" + a.name + "\" is used as a type and a name in class " + this.constructor);
             }
 
             int occuredCount = 0;
 
-                for (Argument arg2 : this.arguments) {//task 3.3
-                    if(arg2.name.equals(a.name)){
-                        occuredCount++;
-                        if(occuredCount>1){
-                            throw new Exception("Variable name \""  + a.name+ "\" occurs more than once in "+ this.constructor);
-
-                        }
+            for (Argument arg2 : this.arguments) {//task 3.3
+                if (arg2.name.equals(a.name)) {
+                    occuredCount++;
+                    if (occuredCount > 1) {
+                        throw new Exception("Variable name \"" + a.name + "\" occurs more than once in " + this.constructor);
 
                     }
-
                 }
             }
-
-
+        }
 
         for (Argument a : this.arguments) {//Task 3.4: check for unused arguments
-
             Boolean argumentIsUsed = false;
-
-
             for (Token token : this.tokens) {
-
                 if (token.getType().equals("nonTerminal")) {
-
-                    if(((Nonterminal)token).getName().equals(a.name) ){
-
+                    if (((Nonterminal) token).getName().equals(a.name)) {
                         argumentIsUsed = true;
                         break;
                     }
                 }
-
             }
-
 
             if (!argumentIsUsed) {//throw Error if an argument is not used
-                throw new Exception("Argument \"" + a.name + "\" in " + this.constructor+" is not used. " );
+                throw new Exception("Argument \"" + a.name + "\" in " + this.constructor + " is not used. ");
             }
-
-
         }
-
-
-
-
     }
-
 
     String compileToString() {//task 2
         int index = 1;
-
         String tokensCompiled = "";
-
         for (Token t : this.tokens) {
             String addPlus = (index == this.tokens.size()) ? "" : "+";
-
             tokensCompiled += t.compile() + addPlus;
             index++;
         }
@@ -178,25 +163,20 @@ class Alternative extends AST { //laver klasser
 
     String compileConstructor() {//laver constructer
         String constInit = "";
-
         String argsCompiled = "";
         int index = 1;
-
         for (Argument a : this.arguments) {
             String addComma = index == this.arguments.size() ? "" : ", ";
-
             argsCompiled += a.compileArguments() + addComma;
             index++;
             constInit += a.compileConstructorArguments();
         }
-
         return "" +
                 this.constructor +
                 "(" + argsCompiled + "){\n" +
                 constInit +
                 "}\n";
     }
-
 
     public String compile(String extendsClass) throws Exception {
         String variables = "";
@@ -206,9 +186,7 @@ class Alternative extends AST { //laver klasser
         this.typeCheck();
         for (Argument a : this.arguments) {
             variables += a.compileVariables();
-
         }
-
         return "" + "class " + this.constructor + extendsString + "{\n" +
                 variables +
                 "\n" + compiledConstructer +
@@ -235,13 +213,14 @@ class Argument extends AST {
     }
 
     public String compileConstructorArguments() {
-        return "this." + name + " = " + name+ ";\n";
+        return "this." + name + " = " + name + ";\n";
     }
 
 }
 
 abstract class Token extends AST {
-    public  String type;
+    public String type;
+
     public String compile() {
         return ": ";
     }
@@ -280,14 +259,7 @@ class Terminal extends Token {// '(' , '*' , '+', ')'
 
     @Override
     public String compile() {
-        return this.token.replaceAll("'","\"");
+        return this.token.replaceAll("'", "\"");
     }
 }
 
-/*
-- variable declaration done
-- toString don
--string/double
--typecheck
--
-* */
