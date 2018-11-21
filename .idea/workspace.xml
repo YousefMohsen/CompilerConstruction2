@@ -12,7 +12,11 @@
       <change beforePath="$PROJECT_DIR$/Terminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/Token.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TokenDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/TokenDef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coco_input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coco_input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coco_output.java" beforeDir="false" afterPath="$PROJECT_DIR$/coco_output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coco_output_expected.java" beforeDir="false" afterPath="$PROJECT_DIR$/coco_output_expected.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,20 +48,20 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1382" />
-          <entry key="txt" value="5" />
+          <entry key="java" value="1826" />
+          <entry key="txt" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1382" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="JAVA" value="1826" />
+          <entry key="PLAIN_TEXT" value="24" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48119822">
+    <splitter split-orientation="horizontal" split-proportion="0.33046287">
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="false">
@@ -69,7 +73,7 @@
             <entry file="file://$PROJECT_DIR$/coco_input.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="135">
-                  <caret line="9" column="21" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="21" />
+                  <caret line="9" column="50" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="50" />
                 </state>
               </provider>
             </entry>
@@ -78,7 +82,7 @@
             <entry file="file://$PROJECT_DIR$/coco_output.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="15">
-                  <caret line="1" column="75" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
                 </state>
               </provider>
             </entry>
@@ -101,8 +105,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/AST.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="134">
-                  <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+                <state relative-caret-position="284">
+                  <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#3444#3445#0" expanded="true" />
@@ -113,12 +117,12 @@
                     <element signature="e#3929#3930#0" expanded="true" />
                     <element signature="e#3316#3317#0" expanded="true" />
                     <element signature="e#3348#3349#0" expanded="true" />
-                    <element signature="e#3664#3665#0" expanded="true" />
-                    <element signature="e#3696#3697#0" expanded="true" />
+                    <element signature="e#5592#5593#0" expanded="true" />
+                    <element signature="e#5619#5620#0" expanded="true" />
+                    <element signature="e#5707#5708#0" expanded="true" />
+                    <element signature="e#5734#5735#0" expanded="true" />
                     <element signature="e#3513#3514#0" expanded="true" />
                     <element signature="e#3561#3562#0" expanded="true" />
-                    <element signature="e#4729#4730#0" expanded="true" />
-                    <element signature="e#4787#4788#0" expanded="true" />
                     <element signature="e#4808#4809#0" expanded="true" />
                     <element signature="e#4864#4865#0" expanded="true" />
                   </folding>
@@ -129,8 +133,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="436">
-                  <caret line="42" column="35" selection-start-line="42" selection-end-line="43" />
+                <state relative-caret-position="353">
+                  <caret line="42" column="44" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -141,8 +145,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/coco_output_expected.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+                <state relative-caret-position="345">
+                  <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -155,6 +159,9 @@
     <findStrings>
       <find>comma</find>
       <find>TokenDef</find>
+      <find>Mes</find>
+      <find>DataTypeDef</find>
+      <find>try</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,6 +170,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/main.java" />
+        <option value="$PROJECT_DIR$/coco_output_expected.java" />
         <option value="$PROJECT_DIR$/coco_output.java" />
         <option value="$PROJECT_DIR$/coco_input.txt" />
         <option value="$PROJECT_DIR$/AST.java" />
@@ -170,7 +179,6 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1280" />
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -195,7 +203,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542754438141" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542798684501" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -224,7 +232,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -232,12 +240,12 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16453674" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Tool Output" />
       <window_info anchor="bottom" id="Version Control" weight="0.32970297" />
       <window_info anchor="bottom" id="Floobits" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.23465346" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3780822" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="ANTLR Preview" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -314,39 +322,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coco_output_expected.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="42" column="35" selection-start-line="42" selection-end-line="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="345">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coco_output.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="75" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="42" column="44" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coco_input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="21" />
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+        <state relative-caret-position="284">
+          <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3444#3445#0" expanded="true" />
@@ -357,12 +365,12 @@
             <element signature="e#3929#3930#0" expanded="true" />
             <element signature="e#3316#3317#0" expanded="true" />
             <element signature="e#3348#3349#0" expanded="true" />
-            <element signature="e#3664#3665#0" expanded="true" />
-            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#5592#5593#0" expanded="true" />
+            <element signature="e#5619#5620#0" expanded="true" />
+            <element signature="e#5707#5708#0" expanded="true" />
+            <element signature="e#5734#5735#0" expanded="true" />
             <element signature="e#3513#3514#0" expanded="true" />
             <element signature="e#3561#3562#0" expanded="true" />
-            <element signature="e#4729#4730#0" expanded="true" />
-            <element signature="e#4787#4788#0" expanded="true" />
             <element signature="e#4808#4809#0" expanded="true" />
             <element signature="e#4864#4865#0" expanded="true" />
           </folding>

@@ -22,7 +22,6 @@ class Start extends AST {
         this.datatypedefs = datatypedefs;
     }
 
-
     public String compile() {
         try {
             String listString = "";
@@ -30,9 +29,9 @@ class Start extends AST {
             for (DataTypeDef s : this.datatypedefs) {
                 listString += s.compile() + "\t";
             }
-            return ""+ listString;
-        }catch (Exception err){
-return ""+err;
+            return "" + listString;
+        } catch (Exception e) {
+            return "" + e;
         }
 
     }
@@ -61,19 +60,18 @@ class DataTypeDef extends AST {
         this.alternatives = alternatives;
     }
 
-    public String compile() throws  Exception {
-        String listString = "abstract class " + this.dataTypeName + "{};\n";
+    public String compile() throws Exception {
+        String listString = "abstract class " + this.dataTypeName + "{};\n\n";
 
         for (Alternative a : this.alternatives) {
-            //System.out.println("ASyssOut"+a.compile(this.dataTypeName));
 
             listString += a.compile(this.dataTypeName);
         }
-        return " " + listString;
+        return "" + listString;
     }
 }
 
-class Alternative extends AST {
+class Alternative extends AST { //laver klasser
     public String constructor;  // Constant -  Variable  -  Mult     -  Add
     public List<Argument> arguments; // Type: NUM, name: -  Type: ID, name: name  -  Type: expr, name: e1
     public List<Token> tokens;// det der står efter :
@@ -84,13 +82,42 @@ class Alternative extends AST {
         this.tokens = tokens;
     }
 
-    void typeCheck() throws  Exception{
+    void typeCheck() throws Exception {
+        Boolean error = false;
+        String notFoundVar = "";
+        for (Token token : this.tokens) {
+            error = false;
+
+            for (Argument arg : this.arguments) {
+                if (token.getType().equals("nonTerminal")) {
+
+                    if(((Nonterminal)token).getName().equals(arg.name) ){
+                        error = false;
+                        break;
+                    }else {
+                        notFoundVar = ((Nonterminal) token).getName();
+                        error = true;
+                    }
+                }
+
+            }
+
+            if(error){
+                throw new Exception("Symbol \""+ notFoundVar+"\" is not defined in " + this.constructor);
 
 
-        for (Argument a : this.arguments) {
+            }
 
-            if(a.name.equals(a.type)){
-                throw new Exception("Symbol \""+a.name+"\" is used as a type and a name in class "+this.constructor);
+
+        }
+
+
+            for (Argument a : this.arguments) {
+
+            if (a.name.equals(a.type)) {
+                throw new Exception("Symbol \"" + a.name + "\" is used as a type and a name in class " + this.constructor);
+
+
             }
 
 
@@ -112,26 +139,23 @@ class Alternative extends AST {
     }
 
 
-    String compileToString() {
+    String compileToString() {//task 2
         int index = 1;
 
         String tokensCompiled = "";
+
         for (Token t : this.tokens) {
             String addPlus = (index == this.tokens.size()) ? "" : "+";
 
-
             tokensCompiled += t.compile() + addPlus;
             index++;
-
-
         }
         return "public String toString(){" +
                 "return \"\"+" + tokensCompiled +
                 "}\n";
     }
 
-
-    String compileConstructor() {
+    String compileConstructor() {//laver constructer
         String constInit = "";
 
         String argsCompiled = "";
@@ -142,8 +166,7 @@ class Alternative extends AST {
 
             argsCompiled += a.compileArguments() + addComma;
             index++;
-
-            constInit += a.compileConstructorArguments() + ";\n";
+            constInit += a.compileConstructorArguments();
         }
 
         return "" +
@@ -154,7 +177,7 @@ class Alternative extends AST {
     }
 
 
-    public String compile(String extendsClass) throws  Exception {
+    public String compile(String extendsClass) throws Exception {
         String variables = "";
         String extendsString = (extendsClass == null) ? "" : " extends " + extendsClass;
         String toStringMethod = this.compileToString();
@@ -164,7 +187,6 @@ class Alternative extends AST {
             variables += a.compileVariables();
 
         }
-
 
         return "" + "class " + this.constructor + extendsString + "{\n" +
                 variables +
@@ -192,15 +214,19 @@ class Argument extends AST {
     }
 
     public String compileConstructorArguments() {
-        return "this." + name + " = " + name;
+        return "this." + name + " = " + name+ ";\n";
     }
 
 }
 
 abstract class Token extends AST {
-
+    public  String type;
     public String compile() {
-        return "token: ";
+        return ": ";
+    }
+
+    public String getType() {
+        return type;
     }
 }
 
@@ -209,6 +235,11 @@ class Nonterminal extends Token {//v,name,e1,e2
 
     Nonterminal(String name) {
         this.name = name;
+        this.type = "nonTerminal";
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -222,11 +253,13 @@ class Terminal extends Token {// '(' , '*' , '+', ')'
 
     Terminal(String token) {
         this.token = token;
+        this.type = "Terminal";
+
     }
 
     @Override
     public String compile() {
-        return this.token.replaceAll("'", "\"");
+        return this.token.replaceAll("'","\"");
     }
 }
 

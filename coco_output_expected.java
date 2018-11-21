@@ -36,7 +36,7 @@ class Add extends expr{
     this.e2=e2;
   }
   public String toString(){
-    return ""+"("+e1+"+"+e2+")";
+    return ""+"("+e1+ "+"  +e2+")";
   }
 }
 
