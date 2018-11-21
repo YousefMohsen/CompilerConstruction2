@@ -24,12 +24,14 @@ class Start extends AST {
 
     public String compile() {
         try {
-            String listString = "";
+            String result = "";
 
             for (DataTypeDef s : this.datatypedefs) {
-                listString += s.compile(this.tokendefs) + "\t";
+                result += s.compile(this.tokendefs) + "\t";
+
             }
-            return "" + listString;
+            return "" + result;
+
         } catch (Exception e) {
             return "" + e;
         }
@@ -61,13 +63,13 @@ class DataTypeDef extends AST {
     }
 
     public String compile(List<TokenDef> tokendefs) throws Exception {
-        String listString = "abstract class " + this.dataTypeName + "{};\n\n";
+        String result = "abstract class " + this.dataTypeName + "{};\n\n";
         for (Alternative a : this.alternatives) {
             a.mapArguments(tokendefs);
 
-            listString += a.compile(this.dataTypeName);
+            result += a.compile(this.dataTypeName);
         }
-        return "" + listString;
+        return "" + result;
     }
 }
 
@@ -117,9 +119,7 @@ class Alternative extends AST { //laver klasser
             if (a.name.equals(a.type)) {//Task 3.2: check for double use of symbol
                 throw new Exception("Symbol \"" + a.name + "\" is used as a type and a name in class " + this.constructor);
             }
-
             int occuredCount = 0;
-
             for (Argument arg2 : this.arguments) {//task 3.3
                 if (arg2.name.equals(a.name)) {
                     occuredCount++;
