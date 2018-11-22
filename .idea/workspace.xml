@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44976005-216b-4c85-967a-e94e2b22d98f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AST.java" beforeDir="false" afterPath="$PROJECT_DIR$/AST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Alternative.class" beforeDir="false" afterPath="$PROJECT_DIR$/Alternative.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Argument.class" beforeDir="false" afterPath="$PROJECT_DIR$/Argument.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataTypeDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/DataTypeDef.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nonterminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/Nonterminal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/Start.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terminal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TokenDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/TokenDef.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +67,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/coco_output.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="648">
+                <state relative-caret-position="290">
                   <caret line="59" selection-start-line="59" selection-end-line="59" />
                   <folding>
                     <element signature="e#89#90#0" expanded="true" />
@@ -114,7 +105,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/AST.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="257">
+                <state relative-caret-position="-554">
                   <caret line="121" column="33" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -213,7 +204,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542821334019" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542821975576" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -242,20 +233,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16453674" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Tool Output" />
       <window_info anchor="bottom" id="Version Control" weight="0.32970297" />
       <window_info anchor="bottom" id="Floobits" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.27326733" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3780822" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="ANTLR Preview" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -356,7 +346,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coco_output.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
+        <state relative-caret-position="290">
           <caret line="59" selection-start-line="59" selection-end-line="59" />
           <folding>
             <element signature="e#89#90#0" expanded="true" />
@@ -377,7 +367,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="-554">
           <caret line="121" column="33" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
